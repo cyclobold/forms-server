@@ -64,6 +64,32 @@ server.post("/create-user", function(request, response){
 
 })
 
+//check user mail
+server.get("/check-email", function(request, response){
+    
+    console.log(request.query);
+
+    let email = request.query.email;
+
+    if(email.trim().length == 0){
+        response.send({
+            message: "Invalid email. Empty",
+            code: 'error',
+            data: email
+        });
+    }else{
+        response.send({
+            message: "Valid email. Not Empty",
+            code: 'success',
+            data: email
+        });
+
+    }
+
+
+
+})
+
 
 //Listen
 server.listen(PORT, function(){
